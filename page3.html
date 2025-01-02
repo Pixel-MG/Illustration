@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Animation</title>
+    <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+    <style>
+        .next-link {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            color: white;
+            text-decoration: none;
+            font-family: 'Gotham Black', sans-serif;
+            font-size: 1.2em;
+            z-index: 10;
+            padding: 10px;
+            border: 2px solid white;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        .next-link:hover {
+            background: white;
+            color: black;
+        }
+        #page2 {
+            background: black;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .animation-container {
+            margin-top: 50px;
+        }
+        .message-right {
+            font-family: 'Gotham Black', sans-serif;
+            font-size: 3em;
+            color: white;
+            text-align: center;
+            margin: 50px 0;
+            animation: fadeIn 2s forwards;
+            animation-delay: 3s;
+            opacity: 0;
+        }
+        .message-left {
+            font-family: 'Special Elite', cursive;
+            font-size: 1.5em;
+            line-height: 1.6;
+            color: white;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            animation: fadeIn 2s forwards;
+            animation-delay: 5s;
+            opacity: 0;
+        }
+        .typewriter {
+            overflow: hidden;
+            white-space: pre-line;
+            animation: typing 6s steps(200) forwards;
+            animation-delay: 5s;
+            width: 0;
+        }
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        @keyframes typing {
+            to { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <!-- First Page -->
+    <div id="page1">
+        <a href="#page2" class="next-link">NEXT</a>
+        <!-- Your existing cake animation code here -->
+    </div>
+
+    <!-- Second Page -->
+    <div id="page2">
+        <div class="animation-container">
+            <dotlottie-player 
+                src="https://lottie.host/80b643cf-3b12-4c15-a551-f1e49a244109/7FX8suoL68.lottie" 
+                background="transparent" 
+                speed="1" 
+                style="width: 300px; height: 300px" 
+                loop 
+                autoplay>
+            </dotlottie-player>
+        </div>
+        
+        <div class="message-right">
+            HAPPY BIRTHDAY<br>AVANTIKA
+        </div>
+        
+        <div class="message-left">
+            <div class="typewriter">
+The stars have aligned as the divine powers rejoice, for its the day their most beautiful and ever smiling creation entered the world of mortals.
+
+May all your wishes come true, may all your goals are achieved, may your smile put the glistening stars to shame, may you live a happy and properous life. I pray for your good health and peace of mind.
+
+I love you and I know you will emerge as a shining lamp of utmost stature and will succeed in every aspect of your life!</div>
+        </div>
+    </div>
+</body>
+</html>
