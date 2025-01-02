@@ -3,110 +3,142 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Animated Cake with Candles</title>
+  <title>Animated Birthday Scene</title>
+  <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+ 
+  <head>
+    <style>
+    .button {
+        position: fixed;
+                top: 20px;
+                left: 20px;
+                color: white;
+                text-decoration: none;
+                font-family: 'Gotham Black', sans-serif;
+                font-size: 1.2em;
+                z-index: 10;
+                padding: 10px;
+                border: 2px solid white;
+                border-radius: 5px;
+                transition: all 0.3s ease;
+    }
+    </style>
+    </head>
+    <body>
+        <button type="button" onclick="location='page3.html'">Click Me!</button>
+    </body>
+
+
   <style>
     body {
       margin: 0;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh;
       background: linear-gradient(to bottom, #ffefba, #ffffff);
       font-family: Arial, sans-serif;
-    }
-
-    .cake {
+      overflow: hidden;
       position: relative;
-      width: 220px;
-      height: 160px;
-      background: linear-gradient(to bottom, #ff8080, #ff4d4d);
-      border-radius: 10px;
-      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-      border: 2px solid #d65f5f;
     }
-
-    .base {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
-      height: 60px;
-      background: linear-gradient(to bottom, #cc6666, #b34747);
-      border-radius: 0 0 10px 10px;
+    .background-animation {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      opacity: 0;
+      transition: opacity 1s ease;
     }
-
+    .background-animation.show {
+      opacity: 1;
+    }
+    /* Rest of the styles remain the same */
+    .cake-container {
+      position: relative;
+      width: 400px;
+      height: 400px;
+      z-index: 2;
+      transition: transform 1s ease;
+    }
+    .cake-container.moved {
+      transform: translateY(100px);
+    }
     .candle {
       position: absolute;
-      bottom: 120%;
-      width: 12px;
-      height: 50px;
+      width: 8px;
+      height: 35px;
       background: linear-gradient(to bottom, #fff, #f2f2f2);
-      border-radius: 5px;
+      border-radius: 4px;
       border: 1px solid #ddd;
+      z-index: 3;
     }
-
-    .candle:nth-child(1) {
-      left: 20%;
-    }
-
-    .candle:nth-child(2) {
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .candle:nth-child(3) {
-      right: 20%;
-    }
-
+    .candle:nth-child(2) { top: 25%; left: 45%; }
+    .candle:nth-child(3) { top: 20%; left: 50%; }
+    .candle:nth-child(4) { top: 25%; left: 55%; }
     .flame {
       position: absolute;
-      top: -20px;
+      top: -15px;
       left: 50%;
       transform: translateX(-50%);
-      width: 14px;
-      height: 20px;
+      width: 10px;
+      height: 15px;
       background: radial-gradient(circle, #ff9b00, #ff4500);
       border-radius: 50%;
       display: none;
       animation: flicker 0.3s infinite;
     }
-
     @keyframes flicker {
-      0%, 100% {
-        transform: translateX(-50%) scale(1);
-      }
-      50% {
-        transform: translateX(-50%) scale(0.9);
-      }
+      0%, 100% { transform: translateX(-50%) scale(1); }
+      50% { transform: translateX(-50%) scale(0.9); }
     }
-
     .sparkle {
       position: absolute;
-      width: 5px;
-      height: 5px;
+      width: 4px;
+      height: 4px;
       background: radial-gradient(circle, #ffdd00, transparent);
       border-radius: 50%;
       animation: sparkle 1s ease-out;
+      z-index: 4;
     }
-
     @keyframes sparkle {
-      0% {
-        opacity: 1;
-        transform: scale(1);
-      }
-      100% {
-        opacity: 0;
-        transform: scale(2);
-      }
+      0% { opacity: 1; transform: scale(1); }
+      100% { opacity: 0; transform: scale(2); }
     }
-
-    .hidden {
+    .birthday-text {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
       display: none;
+      z-index: 5;
     }
   </style>
 </head>
 <body>
-  <div class="cake" ondblclick="blowOutCandles()">
+  <div class="background-animation">
+    <dotlottie-player 
+      src="https://lottie.host/1f7f8ff3-eed3-4306-a6c3-2b76dac62c11/1zi3r0Qu2a.lottie" 
+      background="transparent" 
+      speed="1"
+      loop 
+      autoplay>
+    </dotlottie-player>
+  </div>
+  
+  <div class="cake-container" ondblclick="blowOutCandles()">
+    <!-- SVG cake code remains the same -->
+    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+      <rect x="100" y="350" width="200" height="10" fill="#4a3636"/>
+      <path d="M80 280 L320 280 C320 280 310 350 80 350 Z" fill="#ff4d8d"/>
+      <path d="M80 280 C80 280 190 290 320 280" fill="none" stroke="#8b1a4a" stroke-width="4"/>
+      <path d="M120 220 L280 220 C280 220 270 280 120 280 Z" fill="#4dc3ff"/>
+      <path d="M120 220 C120 220 190 230 280 220" fill="none" stroke="#1a698b" stroke-width="4"/>
+      <path d="M160 160 L240 160 C240 160 230 220 160 220 Z" fill="#ffa64d"/>
+      <path d="M160 160 C160 160 190 170 240 160" fill="none" stroke="#8b571a" stroke-width="4"/>
+      <path d="M80 280 C90 270 100 280 110 270 C120 260 130 280 140 270 C150 260 160 280 170 270 C180 260 190 280 200 270 C210 260 220 280 230 270 C240 260 250 280 260 270 C270 260 280 280 290 270 C300 260 310 280 320 280" fill="#4a3636"/>
+      <path d="M120 220 C130 210 140 220 150 210 C160 200 170 220 180 210 C190 200 200 220 210 210 C220 200 230 220 240 210 C250 200 260 220 270 210 C280 210 280 220 280 220" fill="#4a3636"/>
+      <path d="M160 160 C170 150 180 160 190 150 C200 140 210 160 220 150 C230 140 240 160 240 160" fill="#4a3636"/>
+    </svg>
+    
     <div class="candle">
       <div class="flame" id="flame1"></div>
     </div>
@@ -116,7 +148,17 @@
     <div class="candle">
       <div class="flame" id="flame3"></div>
     </div>
-    <div class="base"></div>
+  </div>
+  
+  <div class="birthday-text">
+    <dotlottie-player 
+      src="https://lottie.host/3aa31eb1-bbfe-4adb-8bbf-be40a6592981/f9NnGPZItC.lottie" 
+      background="transparent" 
+      speed="1" 
+      style="width: 300px; height: 300px" 
+      loop 
+      autoplay>
+    </dotlottie-player>
   </div>
 
   <script>
@@ -126,10 +168,17 @@
       sparkle.style.left = `${x}px`;
       sparkle.style.top = `${y}px`;
       document.body.appendChild(sparkle);
+      setTimeout(() => sparkle.remove(), 1000);
+    }
 
-      setTimeout(() => {
-        sparkle.remove();
-      }, 1000);
+    function showBirthdayMessage() {
+      const cake = document.querySelector('.cake-container');
+      const birthdayText = document.querySelector('.birthday-text');
+      const backgroundAnimation = document.querySelector('.background-animation');
+      
+      cake.classList.add('moved');
+      birthdayText.style.display = 'block';
+      backgroundAnimation.classList.add('show');
     }
 
     function lightCandles() {
@@ -138,11 +187,9 @@
         document.getElementById('flame2'),
         document.getElementById('flame3')
       ];
-
       flames.forEach((flame, index) => {
         setTimeout(() => {
           flame.style.display = 'block';
-
           const rect = flame.getBoundingClientRect();
           for (let i = 0; i < 10; i++) {
             createSparkle(
@@ -153,14 +200,13 @@
         }, index * 1000);
       });
     }
-
+    
     function blowOutCandles() {
       const flames = document.querySelectorAll('.flame');
-      flames.forEach(flame => {
-        flame.style.display = 'none';
-      });
+      flames.forEach(flame => flame.style.display = 'none');
+      setTimeout(showBirthdayMessage, 500);
     }
-
+    
     window.onload = lightCandles;
   </script>
 </body>
